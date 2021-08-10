@@ -1,7 +1,9 @@
 using Demo_Web_API.Authorization_Helpers;
+using Demo_Web_API.Context;
 using Demo_Web_API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,8 +27,12 @@ namespace Demo_Web_API
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
 
+            services.AddDbContextPool<StudentContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("StudentConnectionString")));            
+
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IStudentService, StudentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
