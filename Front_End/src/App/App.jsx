@@ -5,6 +5,8 @@ import { authService } from "../services/authService";
 import { AuthorisedRoute } from "../components/AuthorisedRoute.jsx";
 import HomePage from "./HomePage.jsx";
 import LoginPage from "./LoginPage.jsx";
+import Students from "./Students.jsx";
+import AddStudent from "./AddStudent.jsx";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -41,6 +43,14 @@ function App() {
                 <Route
                   path="/login"
                   component={() => <LoginPage history={history}></LoginPage>}
+                />
+                <Route
+                  path="/students"
+                  component={() => <Students />}
+                />
+                <Route
+                  path="/addstudent"
+                  component={() => <AddStudent />}
                 />
               </div>
             </div>

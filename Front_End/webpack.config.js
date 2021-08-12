@@ -12,7 +12,7 @@ module.exports = {
     contentBase: path.resolve(__dirname, "dist"),
     open: true,
     clientLogLevel: "silent",
-    port: 8080,
+    port: 8089,
     historyApiFallback: true,
   },
   module: {
